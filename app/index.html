@@ -1,162 +1,108 @@
 <!doctype html>
 <html lang="">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>watch english</title>
+    <title>lang player</title>
 
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
 
-    <!-- build:css styles/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/skeleton/css/skeleton.css" />
-    <link rel="stylesheet" href="bower_components/video.js/dist/video-js/video-js.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
+    <link rel="stylesheet" href="bower_components/video.js/dist/video-js/video-js.css"/>
 
-    <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
 
     <style>
-      .subtitles {
-        position: absolute;
-        background-color: rgba(0, 0, 0, 0.116094);
-        bottom: 33px;
-        font-size: 20px;
-        color: #FFFFFF;
-        font-weight: bold;
-        margin-left: 10%;
-        text-align: center;
-        min-width: 20%;
-        width: 80%;
-        font-family: Helvetica, Arial, sans-serif;
-        text-shadow: black 1px 0px 0px;
-        z-index: 999999;
-        opacity: 1;
-        -webkit-user-select: initial;
-      }
 
-      .translate {
-        background: rgba(0, 255, 61, 0.67);
-        padding: 5px;
-        position: absolute;
-        color: white;
-        font-size: 24px;
-        font-weight: bold;
-        text-shadow: 0 0 5px #000;
-        bottom: 100px;
-        left: 50%;
-      }
-
-      #holder {
-        width: 400px;
-        height: 200px;
-
-        border: 1px solid red;
-
-      }
-    </style>
-
-    <style>
-      #holder { border: 10px dashed #ccc; width: 300px; height: 300px; margin: 20px auto;}
-      #holder.hover { border: 10px dashed #333; }
-    </style>
-
-    <!--<script src="vendor/nw/window_state.js"></script>-->
-    <!--<script src="vendor/nw/context_menu.js"></script>-->
-    <!--<script src="vendor/nw/external_links.js"></script>-->
-    <!--<script src="vendor/nw/dev_helper.js"></script>-->
-    <script>
-      (function () {
-        var gui = require('nw.gui');
-        var win = gui.Window.get();
-
-        // Create default menu items for OSX
-        if (process.platform === 'darwin') {
-          var mb = new gui.Menu({ type: "menubar" });
-          mb.createMacBuiltin(gui.App.manifest.productName);
-          win.menu = mb;
+        html,
+        body {
+            width: 100%;
+            height: 100%;
         }
-      }());
-    </script>
 
-  </head>
-  <body>
+        .subtitles {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.116094);
+            bottom: 33px;
+            font-size: 20px;
+            color: #FFFFFF;
+            font-weight: bold;
+            margin-left: 10%;
+            text-align: center;
+            min-width: 20%;
+            width: 80%;
+            font-family: Helvetica, Arial, sans-serif;
+            text-shadow: black 1px 0px 0px;
+            z-index: 999999;
+            opacity: 1;
+            -webkit-user-select: initial;
+        }
 
-    <!--<div class="container">-->
-      <!--<video id="example_video_1" class="video-js vjs-default-skin"-->
-             <!--controls preload="auto" width="640" height="264"-->
-             <!--poster="http://video-js.zencoder.com/oceans-clip.png"-->
-             <!--data-setup='{ "controls": true, "autoplay": true, "preload": "auto" }'>-->
-        <!--<source src="video/small.mp4" type='video/mp4' />-->
-        <!--<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>-->
-      <!--</video>-->
-    <!--</div>-->
+        .translate {
+            background: rgba(0, 255, 61, 0.67);
+            padding: 5px;
+            position: absolute;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 0 0 5px #000;
+            bottom: 100px;
+            left: 50%;
+        }
 
+        #holder {
+            width: 400px;
+            height: 200px;
 
-    <div id="holder"></div>
-    <video id="example_video_2" controls>
-    <source src="" type='video/mp4' />
-    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+            border: 1px solid red;
+
+        }
+    </style>
+
+    <style>
+        #holder {
+            border: 10px dashed #ccc;
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+        }
+
+        #holder.hover {
+            border: 10px dashed #333;
+        }
+    </style>
+
+</head>
+<body>
+
+<template id="video-template">
+    <video id="example_video_1" class="video-js vjs-default-skin"
+           controls preload="auto" width="640" height="264"
+           data-setup='{ "controls": true, "autoplay": true, "preload": "auto" }'>
+        <source src="D:\dev\LangPlayer\app\video\small.webm" type='video/mp4'/>
+        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that
+            <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
     </video>
-    <img src="" alt="" id="teste_img"/>
+</template>
 
-    <script>
-      window.ondragover = function(e) { e.preventDefault(); return false };
-      window.ondrop = function(e) { e.preventDefault(); return false };
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/video.js/dist/video-js/video.dev.js"></script>
 
-      var holder = document.getElementById('holder');
-      holder.ondragover = function () { this.className = 'hover'; return false; };
-      holder.ondragleave = function () { this.className = ''; return false; };
-      holder.ondrop = function (e) {
-        e.preventDefault();
-
-        var file = e.dataTransfer.files[0],
-                reader = new FileReader();
-        reader.onload = function (event) {
-          console.log(event.target);
-
-          var video = $('#example_video_2')[0];
-          video.src = file.path;
-          video.type = file.type;
-          video.load();
-          video.play();
-        };
-        console.log(file);
-        reader.readAsDataURL(file);
-
-        return false;
-      };
-
-    </script>
-
-
-    <!-- build:js scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/video.js/dist/video-js/video.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
 <script src="scripts/BubblesJS/bubbles.js"></script>
-    <script src="scripts/main.js"></script>
-        <!-- build:js app.js -->
+<script src="scripts/ui/DropHandler.js"></script>
+<script src="scripts/main.js"></script>
 
-        <!-- endbuild -->
 
-    <script>
-      var gulp = require('gulp');
+<script>
+    var gulp = require('gulp');
 
-      if(gulp) {
+    if (gulp) {
 
-      gulp.task('reload', function () {
-        if (location) location.reload();
-      });
+        gulp.task('reload', function () {
+            if (location) location.reload();
+        });
 
-      gulp.watch('**/*', ['reload']);
-      }
-    </script>
+        gulp.watch('**/*', ['reload']);
+    }
+</script>
 </body>
 </html>

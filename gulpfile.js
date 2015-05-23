@@ -15,6 +15,8 @@ const gulp = require('gulp')
 
 const scriptsSrc = [
   './app/scripts/**/*.js'
+  , '!./app/scripts/nw/*.js'
+  , '!./app/scripts/BubblesJS/*.js'
 ];
 
 gulp.task('jscs', function () {
@@ -54,11 +56,8 @@ gulp.task('nw', function() {
     platforms: ['osx32', 'osx64', 'win32', 'win64']
   });
 
-//Log stuff you want
-
   nw.on('log',  console.log);
 
-// Build returns a promise
   nw.build().then(function () {
     console.log('all done!');
   }).catch(function (error) {
