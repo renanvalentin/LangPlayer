@@ -1,0 +1,30 @@
+{
+  "name": "LangPlayer",
+  "description": "Learn new languages watching your favorite series.",
+  "version": "0.0.1",
+  "chromium-args": "--js-flags=--harmony",
+  "js-flags": "--harmony --harmony_arrow_functions",
+  "main": "./index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Renan Valentin Ferreira",
+  "license": "GNU",
+  "window": {
+    "title": "Watch english",
+    "toolbar": true,
+    "frame": false,
+    "kiosk": false,
+    "width": 1152,
+    "height": 755,
+    "min_width": 1152,
+    "min_height": 755,
+    "resizable": true,
+    "position": "center",
+    "single-instance": true,
+    "node-remote": "localhost"
+  },
+  "dependencies": {
+    "request": "^2.55.0"
+  }
+}

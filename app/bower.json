@@ -1,0 +1,9 @@
+{
+  "name": "watch-english",
+  "private": true,
+  "dependencies": {
+    "skeleton": "~2.0.4",
+    "video.js": "~4.12.6",
+    "jquery": "~2.1.4"
+  }
+}

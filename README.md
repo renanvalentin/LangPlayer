@@ -1,2 +1,2 @@
 # LangPlayer
-Learn the languages by watching your favorite series. 
+Learn new languages watching your favorite series.
