@@ -19,7 +19,7 @@ class App {
 
     $(document).on('click', '.subtitles', function (e) {
       let service = new GoogleTranslateService();
-      service.get($('.subtitle_original').text()).then((result) => {
+      service.get($('.subtitle_original').html().replace(/<br>/g, '\n')).then((result) => {
         store = GoogleTranslateFilter.prepareData(result.dictionary);
         GoogleTranslateFilter.addText(store);
       });
@@ -44,8 +44,8 @@ class App {
       let offset = $('.subtitle_original').offset();
 
       container.css({
-        left: offset.left + 'px',
-        top: offset.top + 'px',
+        //left: offset.left + 'px',
+        //top: offset.top + 'px',
         width: $('.subtitle_original').width()
       });
 

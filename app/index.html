@@ -21,8 +21,8 @@
 
         .subtitles {
             position: absolute;
+            bottom: 60px;
             background-color: rgba(0, 0, 0, 0.116094);
-            bottom: 50px;
             font-size: 20px;
             color: #FFFFFF;
             font-weight: bold;
@@ -31,7 +31,7 @@
             min-width: 20%;
             width: 80%;
             font-family: Helvetica, Arial, sans-serif;
-            text-shadow: black 1px 0px 0px;
+
             z-index: 999999;
             opacity: 1;
             -webkit-user-select: initial;
@@ -56,6 +56,11 @@
             border: 1px solid red;
 
         }
+
+        .subtitle_original,
+        .translation {
+            text-shadow: black 1px 0px 0px;
+        }
     </style>
 
     <style>
@@ -72,6 +77,10 @@
 
         .translation {
             cursor: pointer;
+        }
+
+        .highlighted {
+            top: 0;
         }
 
         .highlighted {

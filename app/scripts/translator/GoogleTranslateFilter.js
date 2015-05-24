@@ -9,12 +9,18 @@ const prepareData = data => {
   let formattedData = data.map((item) => {
     let definitions = {};
 
-    if (item[4] && item[4] != paragraph) {
+    if (item[4] && item[4] != paragraph && item[2]) {
+      paragraph = item[4];
+    } else if (!item[2] && item[4] == "\n") {
       paragraph = item[4];
     }
 
     definitions.originalWord = item[0];
-    definitions.translated = item[2][0][0];
+    if (item[2]) {
+      definitions.translated = item[2][0][0];
+    } else {
+      definitions.translated = item[4];
+    }
     definitions.paragraph = paragraph;
     definitions.index = item[3].map((position) => {
       return {
@@ -32,6 +38,10 @@ const prepareData = data => {
 
 const addText = translations => {
   let html = translations.reduce((a, b) => {
+    if (b.translated == '\n') {
+      return a + `<br>`;
+    }
+
     return a + `<span>${b.translated}</span> `;
   }, '');
 
