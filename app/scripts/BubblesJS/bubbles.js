@@ -74,10 +74,17 @@ function videoBubbles() {
 	 * also initializes the bubbles for this specific video
 	 *********************************/
 	this.subtitleSHOW = function( elem, text, bool ) {
-		if( bool )
-			elem.innerHTML = text;
-		else
+		if( bool ) {
+			var wrapper = doc.createElement('div');
+			wrapper.innerHTML = text;
+
+			wrapper.className = "subtitle_original";
+
+			elem.appendChild(wrapper);
+		} else {
 			elem.innerHTML = "";
+		}
+
 	};
 	
 	/**********************************

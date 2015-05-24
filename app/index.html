@@ -22,7 +22,7 @@
         .subtitles {
             position: absolute;
             background-color: rgba(0, 0, 0, 0.116094);
-            bottom: 33px;
+            bottom: 50px;
             font-size: 20px;
             color: #FFFFFF;
             font-weight: bold;
@@ -68,6 +68,24 @@
 
         #holder.hover {
             border: 10px dashed #333;
+        }
+
+        .translation {
+            cursor: pointer;
+        }
+
+        .highlighted {
+            position: absolute;
+            color: transparent;
+        }
+
+        .highlighted span {
+            color: white;
+        }
+
+        .highlighted span,
+        .translation span:hover {
+            background: blue;
         }
     </style>
 

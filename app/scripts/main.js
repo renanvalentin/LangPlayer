@@ -1,9 +1,9 @@
 'use strict';
 
 const
-    VideoHandler = require('./scripts/io/VideoHandler')
-  , SubtitleHandler = require('./scripts/io/SubtitlesHandler');
-
+    FileTransfer = require('./scripts/io/FileTransfer')
+  , GoogleTranslateService = require('./scripts/services/GoogleTranslateService')
+  , GoogleTranslateFilter = require('./scripts/translator/GoogleTranslateFilter');
 
 class App {
   start() {
@@ -11,17 +11,48 @@ class App {
 
     dropHandler.subscribe('dropped', {
       onNotify: function(file) {
-        //let videoHandler = new VideoHandler();
-        if(file.path.endsWith('.mp4') ||
-           file.path.endsWith('.avi') ||
-           file.path.endsWith('.webm')
-        ) {
-          VideoHandler.loadVideo(file);
-        } else {
-          SubtitleHandler.loadSubtitle(file);
-        }
+        FileTransfer.process(file);
       }
-    })
+    });
+
+    let store = [];
+
+    $(document).on('click', '.subtitles', function (e) {
+      let service = new GoogleTranslateService();
+      service.get($('.subtitle_original').text()).then((result) => {
+        store = GoogleTranslateFilter.prepareData(result.dictionary);
+        GoogleTranslateFilter.addText(store);
+      });
+    });
+
+    $(document).on('mouseover', '.translation span', (e) => {
+      let text = $(e.currentTarget).html();
+      let container = $('<div />');
+
+      let originalText = $('.subtitle_original').html();
+
+      let word = GoogleTranslateFilter.find(text, store);
+      console.log(word);
+
+      let highlightedText = GoogleTranslateFilter.hightlightWords(word.paragraph, word.index);
+
+      highlightedText = originalText.replace(word.paragraph, highlightedText);
+
+      container.addClass('highlighted');
+      container.html(highlightedText);
+
+      let offset = $('.subtitle_original').offset();
+
+      container.css({
+        left: offset.left + 'px',
+        top: offset.top + 'px',
+        width: $('.subtitle_original').width()
+      });
+
+      container.appendTo('.subtitles');
+    }).on('mouseleave', 'span', () => {
+      $('.highlighted').remove();
+    });
   }
 }
 

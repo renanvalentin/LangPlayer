@@ -53,4 +53,4 @@ class VideoHandler extends FileHandler {
   }
 }
 
-module.exports = new VideoHandler();
+module.exports = VideoHandler;

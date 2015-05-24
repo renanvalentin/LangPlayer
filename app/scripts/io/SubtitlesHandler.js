@@ -31,5 +31,5 @@ class SubtitlesHandler extends FileHandler {
   }
 }
 
-module.exports = new SubtitlesHandler();
+module.exports = SubtitlesHandler;
 
