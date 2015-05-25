@@ -13,18 +13,18 @@ class SubtitlesHandler extends FileHandler {
   }
 
   loadSubtitle(file) {
-    this.loadFile(file).then(function (data) {
-      this.applySubtitle(data);
-    }.bind(this));
+    //this.loadFile(file).then(function (data) {
+      this.applySubtitle(file);
+    //}.bind(this));
   }
 
-  applySubtitle(data) {
+  applySubtitle(file) {
     var subtitles = new Bubbles.videoJS(document.querySelector('video').id);
     subtitles.subtitles(false,
       {
         "English": {
           language: "English",
-          file: data.file.path
+          file: file.path
         }
       }
     );

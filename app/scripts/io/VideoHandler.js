@@ -13,22 +13,22 @@ class VideoHandler extends FileHandler {
   }
 
   loadVideo(file) {
-    this.loadFile(file).then(function (data) {
-      this.createTemplate(data);
+  //  this.loadFile(file).then(function (data) {
+      this.createTemplate(file);
       this.applyVideoJs();
 
       this.lastPlayerId = this.playerId;
-    }.bind(this));
+    //}.bind(this));
   }
 
-  createTemplate(data) {
+  createTemplate(file) {
     var t = document.querySelector('#video-template');
 
     this.playerId = this.createPlayerId();
 
     t.content.querySelector('video').id = this.playerId;
-    t.content.querySelector('source').src = data.file.path;
-    t.content.querySelector('source').type = data.file.type;
+    t.content.querySelector('source').src = file.path;
+    t.content.querySelector('source').type = file.type;
 
     var clone = document.importNode(t.content, true);
     document.body.appendChild(clone);
@@ -39,6 +39,12 @@ class VideoHandler extends FileHandler {
       var oldPlayer = document.getElementById(this.lastPlayerId);
       videojs(oldPlayer).dispose();
     }
+
+    //var s = document.createElement("script");
+    //s.type = "text/javascript";
+    //s.src = "bower_components/video.js/dist/video-js/video.dev.js";
+    //document.head.appendChild(s);
+
 
     videojs(document.getElementById(this.playerId), {
       "controls": true,

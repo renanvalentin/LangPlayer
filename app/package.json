@@ -12,7 +12,7 @@
   "license": "GNU",
   "window": {
     "title": "Watch english",
-    "toolbar": true,
+    "toolbar": false,
     "frame": false,
     "kiosk": false,
     "width": 960,

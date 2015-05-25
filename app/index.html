@@ -42,9 +42,7 @@
 
             text-shadow: 0 0 5px #000;
 
-            border-top: 2px solid rgba(255, 255, 0, 0.29);
-            margin-top: 5px;
-            padding: 5px;
+
 
         }
 
@@ -62,7 +60,9 @@
         }
 
         .translation {
-
+            border-top: 2px solid rgba(255, 255, 0, 0.29);
+            margin-top: 5px;
+            padding: 5px;
         }
     </style>
 
@@ -103,6 +103,7 @@
 
 </head>
 <body>
+<input id="fileDialog" type="file" />
 
 <template id="video-template">
     <video id="example_video_1" class="video-js vjs-default-skin"
@@ -123,16 +124,30 @@
 
 
 <script>
-    var gulp = require('gulp');
 
-    if (gulp) {
+//    var chooser = document.querySelector('#fileDialog');
+//    chooser.addEventListener("change", function(evt) {
+//        console.log(this.value);
+//
+//        var file = this.files[0];
+//
+//        document.getElementById('vivi').src = file.path;
+//        document.getElementById('vivi').type = file.type;
+//
+//        FileTransfer.process();
+//    }, false);
 
-        gulp.task('reload', function () {
-            if (location) location.reload();
-        });
 
-        gulp.watch('**/*', ['reload']);
-    }
+//    var gulp = require('gulp');
+//
+//    if (gulp) {
+//
+//        gulp.task('reload', function () {
+//            if (location) location.reload();
+//        });
+//
+//        gulp.watch('**/*', ['reload']);
+//    }
 </script>
 </body>
 </html>

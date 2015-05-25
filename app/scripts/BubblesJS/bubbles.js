@@ -556,9 +556,17 @@ function videoBubbles() {
 					ret[ j ][ "text" ]	= "";
 					
 					c = 0;
-					
-					while( fileLines[ i + ++c ].replace( /^\s+|\s+$/g, "" ) !== "" )
-						ret[ j ][ "text" ] += fileLines[ i + c ].replace( /\n\r|\r\n|\n|\r/g, "<br />" ); //str_replace("'", '"',  ); in php
+
+					try {
+						var counter = i + ++c;
+						while(fileLines[ counter ] && fileLines[ counter ].replace( /^\s+|\s+$/g, "" ) !== "" ) {
+							ret[j]["text"] += fileLines[i + c].replace(/\n\r|\r\n|\n|\r/g, "<br />"); //str_replace("'", '"',  ); in php
+							counter = i + ++c
+						}
+					} catch(error) {
+						console.log(error);
+					}
+
 				}
 			}
 				

@@ -14,6 +14,13 @@ class App {
         FileTransfer.process(file);
       }
     });
+    //var chooser = document.querySelector('#fileDialog');
+    //chooser.addEventListener("change", function(evt) {
+    //  console.log(this.value);
+    //  FileTransfer.process(this.files[0]);
+    //}, false);
+
+    //FileTransfer.process(file);
 
     let store = [];
 
