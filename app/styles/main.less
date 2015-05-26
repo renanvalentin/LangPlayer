@@ -1,0 +1,121 @@
+@bodyBackground: #121314;
+@sectionBackground: #222326;
+@linkColor: #949599;
+@defaultColor: #949599;
+@separatorCleanColor: #3e3e40;
+@separatorDarkColor: #000;
+@scColor: #f50;
+@transitionValue: all 0.5s ease;
+
+.topFrame {
+  background: @bodyBackground;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  border-top: 2px solid @scColor;
+  border-bottom: 1px solid @separatorDarkColor;
+  box-shadow: 0 0 7px 0px #000;
+  z-index: 100;
+  -webkit-app-region: drag;
+}
+
+.topFrame_title {
+  width: 70px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: normal;
+  margin: 8px auto 0;
+  letter-spacing: 1px;
+  -webkit-app-region: no-drag;
+}
+
+.windowAction {
+  overflow: hidden;
+}
+
+.windowAction {
+  float: left;
+  margin: 5px 0 0 0;
+  -webkit-app-region: no-drag;
+}
+.windowAction_item {
+  float: left;
+  margin: 0 10px;
+  font-size: 10px;
+  cursor: pointer;
+  border-radius: 15px;
+  padding: 2px 4px;
+  letter-spacing: 0;
+
+  &:nth-child(1) {
+    background: #D96C76;
+
+    & .fa {
+      position: relative;
+      top: -1px;
+    }
+  }
+  &:nth-child(2) {
+    background: #FDF9C6;
+  }
+  &:nth-child(3) {
+    background: #96E1C7;
+  }
+
+  & .fa {
+    cursor: pointer;
+    color: #222326;
+  }
+}
+
+.navigationButton {
+  font-size: 14px;
+  margin-top: 5px;
+
+  & .fa {
+    color: #464647;
+  }
+
+  &.goBack {
+    clear: both;
+    margin-left: 7px
+  }
+
+  &.goForward {
+
+  }
+}
+
+.appInfo {
+  float: right;
+  margin: 15px 0 0 0;
+  -webkit-app-region: no-drag;
+}
+.appInfo_item {
+  margin: 0 10px;
+  float: left;
+
+  & a {
+    font-size: 14px;
+    color: @linkColor;
+    cursor: pointer;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  &:last-child a {
+    display: none;
+    color: @scColor;
+    &.updateAvailable {
+      display: block;
+    }
+  }
+}
+
+body {
+  background: #333;
+}

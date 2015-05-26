@@ -8,8 +8,8 @@
 
 
     <link rel="stylesheet" href="bower_components/video.js/dist/video-js/video-js.css"/>
-
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="styles/main.css" />
 
     <style>
 
@@ -17,6 +17,8 @@
         body {
             width: 100%;
             height: 100%;
+
+            overflow: hidden;
         }
 
         .subtitles {
@@ -39,10 +41,7 @@
 
         .translate {
 
-
             text-shadow: 0 0 5px #000;
-
-
 
         }
 
@@ -103,7 +102,21 @@
 
 </head>
 <body>
-<input id="fileDialog" type="file" />
+<!-- header -->
+<header class="topFrame">
+    <ul class="windowAction">
+        <li class="windowAction_item " id="closeApp">
+            <i class="fa fa-times"></i>
+        </li>
+        <li class="windowAction_item " id="minimizeApp">
+            <i class="fa fa-minus"></i>
+        </li>
+        <li class="windowAction_item " id="expandApp">
+            <i class="fa fa-plus"></i>
+        </li>
+    </ul>
+</header>
+<!-- header / end -->
 
 <template id="video-template">
     <video id="example_video_1" class="video-js vjs-default-skin"
@@ -125,29 +138,16 @@
 
 <script>
 
-//    var chooser = document.querySelector('#fileDialog');
-//    chooser.addEventListener("change", function(evt) {
-//        console.log(this.value);
-//
-//        var file = this.files[0];
-//
-//        document.getElementById('vivi').src = file.path;
-//        document.getElementById('vivi').type = file.type;
-//
-//        FileTransfer.process();
-//    }, false);
+        var gulp = require('gulp');
 
+        if (gulp) {
 
-//    var gulp = require('gulp');
-//
-//    if (gulp) {
-//
-//        gulp.task('reload', function () {
-//            if (location) location.reload();
-//        });
-//
-//        gulp.watch('**/*', ['reload']);
-//    }
+            gulp.task('reload', function () {
+                if (location) location.reload();
+            });
+
+            gulp.watch('**/*', ['reload']);
+        }
 </script>
 </body>
 </html>

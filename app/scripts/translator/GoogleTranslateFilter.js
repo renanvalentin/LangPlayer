@@ -49,7 +49,7 @@ const addText = translations => {
   translation.html(html);
 
   $('.subtitles').append(translation);
-}
+};
 
 const find = (text, store) => {
 

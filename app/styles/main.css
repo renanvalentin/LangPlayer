@@ -1,0 +1,94 @@
+.topFrame {
+  background: #121314;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  border-top: 2px solid #ff5500;
+  border-bottom: 1px solid #000000;
+  box-shadow: 0 0 7px 0px #000;
+  z-index: 100;
+  -webkit-app-region: drag;
+}
+.topFrame_title {
+  width: 70px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: normal;
+  margin: 8px auto 0;
+  letter-spacing: 1px;
+  -webkit-app-region: no-drag;
+}
+.windowAction {
+  overflow: hidden;
+}
+.windowAction {
+  float: left;
+  margin: 5px 0 0 0;
+  -webkit-app-region: no-drag;
+}
+.windowAction_item {
+  float: left;
+  margin: 0 10px;
+  font-size: 10px;
+  cursor: pointer;
+  border-radius: 15px;
+  padding: 2px 4px;
+  letter-spacing: 0;
+}
+.windowAction_item:nth-child(1) {
+  background: #D96C76;
+}
+.windowAction_item:nth-child(1) .fa {
+  position: relative;
+  top: -1px;
+}
+.windowAction_item:nth-child(2) {
+  background: #FDF9C6;
+}
+.windowAction_item:nth-child(3) {
+  background: #96E1C7;
+}
+.windowAction_item .fa {
+  cursor: pointer;
+  color: #222326;
+}
+.navigationButton {
+  font-size: 14px;
+  margin-top: 5px;
+}
+.navigationButton .fa {
+  color: #464647;
+}
+.navigationButton.goBack {
+  clear: both;
+  margin-left: 7px;
+}
+.appInfo {
+  float: right;
+  margin: 15px 0 0 0;
+  -webkit-app-region: no-drag;
+}
+.appInfo_item {
+  margin: 0 10px;
+  float: left;
+}
+.appInfo_item a {
+  font-size: 14px;
+  color: #949599;
+  cursor: pointer;
+}
+.appInfo_item a:hover {
+  color: #fff;
+}
+.appInfo_item:last-child a {
+  display: none;
+  color: #ff5500;
+}
+.appInfo_item:last-child a.updateAvailable {
+  display: block;
+}
+body {
+  background: #333;
+}
