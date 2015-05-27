@@ -4,57 +4,19 @@ const
     FileTransfer = require('./scripts/io/FileTransfer')
   , GoogleTranslateService = require('./scripts/services/GoogleTranslateService')
   , GoogleTranslateFilter = require('./scripts/translator/GoogleTranslateFilter')
-  , SubtitleHighlight = require('./scripts/translator/SubtitleHighlight');
+  , SubtitleHandler = require('./scripts/translator/SubtitleHandler');
 
 class App {
   start() {
     let dropHandler = new DropHandler({ el: 'body' });
 
     dropHandler.subscribe('dropped', {
-      onNotify: function(file) {
-        FileTransfer.process(file);
+      onNotify: function(files) {
+        FileTransfer.process(files);
       }
     });
 
-    SubtitleHighlight.register();
-
-    //let store = [];
-    //
-    //$(document).on('click', '.subtitles', function (e) {
-    //  let service = new GoogleTranslateService();
-    //  service.get($('.subtitle_original').html().replace(/<br>/g, '\n')).then((result) => {
-    //    store = GoogleTranslateFilter.prepareData(result.dictionary);
-    //    GoogleTranslateFilter.addText(store);
-    //  });
-    //});
-    //
-    //$(document).on('mouseover', '.translation span', (e) => {
-    //  let text = $(e.currentTarget).html();
-    //  let container = $('<div />');
-    //
-    //  let originalText = $('.subtitle_original').html();
-    //
-    //  let word = GoogleTranslateFilter.find(text, store);
-    //
-    //  let highlightedText = GoogleTranslateFilter.hightlightWords(word.paragraph, word.index);
-    //
-    //  highlightedText = originalText.replace(word.paragraph, highlightedText);
-    //
-    //  container.addClass('highlighted');
-    //  container.html(highlightedText);
-    //
-    //  let offset = $('.subtitle_original').offset();
-    //
-    //  container.css({
-    //    //left: offset.left + 'px',
-    //    //top: offset.top + 'px',
-    //    width: $('.subtitle_original').width()
-    //  });
-    //
-    //  container.appendTo('.subtitles');
-    //}).on('mouseleave', 'span', () => {
-    //  $('.highlighted').remove();
-    //});
+    SubtitleHandler.register();
   }
 }
 

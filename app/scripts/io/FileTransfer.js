@@ -13,16 +13,18 @@ const
 
 
 const FileTransferFactory = {
-  process: (file) => {
-    if (file.path.endsWith('.mp4') ||
-      file.path.endsWith('.avi') ||
-      file.path.endsWith('.webm')
-    ) {
-      videoHandler.loadVideo(file);
-    }
-    else {
-      subtitlesHandler.loadSubtitle(file);
-    }
+  process: (files) => {
+   [].forEach.call(files, (file, index) => {
+      if (file.path.endsWith('.mp4') ||
+        file.path.endsWith('.avi') ||
+        file.path.endsWith('.webm')
+      ) {
+        videoHandler.loadVideo(file);
+      }
+      else {
+        subtitlesHandler.loadSubtitle(file);
+      }
+    });
   }
 };
 

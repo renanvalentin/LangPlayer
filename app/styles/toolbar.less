@@ -1,0 +1,65 @@
+@bodyBackground: #121314;
+@sectionBackground: #222326;
+@linkColor: #949599;
+@defaultColor: #949599;
+@separatorCleanColor: #3e3e40;
+@separatorDarkColor: #000;
+@scColor: #008de7;
+@transitionValue: all 0.5s ease;
+
+.toolbar {
+  background: @bodyBackground;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  border-top: 2px solid @scColor;
+  border-bottom: 1px solid @separatorDarkColor;
+  box-shadow: 0 0 7px 0px #000;
+  z-index: 100;
+  -webkit-app-region: drag;
+}
+
+.toolbar-actions {
+  float: right;
+  -webkit-app-region: no-drag;
+  -webkit-user-select: none;
+
+  > li {
+    width: 25px;
+    height: 21px;
+
+    cursor: pointer;
+
+    text-align: center;
+    color: white;
+
+    display: inline-block;
+
+    &:hover {
+      background: #3665b3;
+    }
+
+    &:last-child {
+      width: 45px;
+
+      background: #c75050;
+    }
+  }
+
+  .clearfix {
+    *zoom: 1;
+    &:before,
+    &:after {
+      display: table;
+      content: "";
+      // Fixes Opera/contenteditable bug:
+      // http://nicolasgallagher.com/micro-clearfix-hack/#comment-36952
+      line-height: 0;
+    }
+    &:after {
+      clear: both;
+    }
+  }
+}

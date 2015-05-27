@@ -16,7 +16,7 @@
     "frame": false,
     "kiosk": false,
     "width": 640,
-    "height": 284,
+    "height": 265,
     "resizable": true,
     "position": "center",
     "single-instance": true,

@@ -3,120 +3,46 @@
 <head>
     <meta charset="utf-8">
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>lang player</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>Lang player</title>
 
+    <link type="text/css" rel="stylesheet" href="styles/materialize/css/materialize.min.css"  media="screen,projection"/>
 
     <link rel="stylesheet" href="bower_components/video.js/dist/video-js/video-js.css"/>
-    <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="styles/main.css" />
-
-    <style>
-
-        html,
-        body {
-            width: 100%;
-            height: 100%;
-
-            overflow: hidden;
-        }
-
-        .subtitles {
-            position: absolute;
-            bottom: 60px;
-
-            font-size: 20px;
-            color: #FFFFFF;
-            font-weight: bold;
-            margin-left: 10%;
-            text-align: center;
-            min-width: 20%;
-            width: 80%;
-            font-family: Helvetica, Arial, sans-serif;
-
-            z-index: 999999;
-            opacity: 1;
-            -webkit-user-select: initial;
-        }
-
-        .translate {
-
-            text-shadow: 0 0 5px #000;
-
-        }
-
-        #holder {
-            width: 400px;
-            height: 200px;
-
-            border: 1px solid red;
-
-        }
-
-        .subtitle_original,
-        .translation {
-            text-shadow: black 1px 0px 0px;
-        }
-
-        .translation {
-            border-top: 2px solid rgba(255, 255, 0, 0.29);
-            margin-top: 5px;
-            padding: 5px;
-        }
-    </style>
-
-    <style>
-        #holder {
-            border: 10px dashed #ccc;
-            width: 300px;
-            height: 300px;
-            margin: 20px auto;
-        }
-
-        #holder.hover {
-            border: 10px dashed #333;
-        }
-
-        .translation {
-            cursor: pointer;
-        }
-
-        .highlighted {
-            top: 0;
-        }
-
-        .highlighted {
-            position: absolute;
-            color: transparent;
-        }
-
-        .highlighted span {
-            color: white;
-        }
-
-        .highlighted span,
-        .translation span:hover {
-            background: blue;
-        }
-    </style>
-
+    <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="styles/main.css"/>
+    <link rel="stylesheet" href="styles/subtitle-highlight.css"/>
+    <link rel="stylesheet" href="styles/subtitles.css"/>
+    <link rel="stylesheet" href="styles/toolbar.css"/>
+    <link rel="stylesheet" href="styles/translation.css"/>
 </head>
 <body>
 <!-- header -->
-<header class="topFrame">
-    <ul class="windowAction">
-        <li class="windowAction_item " id="closeApp">
-            <i class="fa fa-times"></i>
-        </li>
-        <li class="windowAction_item " id="minimizeApp">
+<header class="toolbar">
+    <ul class="toolbar-actions">
+        <li id="minimizeApp">
             <i class="fa fa-minus"></i>
         </li>
-        <li class="windowAction_item " id="expandApp">
+        <li id="expandApp">
             <i class="fa fa-plus"></i>
+        </li>
+        <li id="closeApp">
+            <i class="fa fa-times"></i>
         </li>
     </ul>
 </header>
 <!-- header / end -->
+
+<!-- informative -->
+
+<section class="tutorial">
+Arraste o vídeo e a legenda para dentro do player. <br>
+    Enjoy your studies! :D
+</section>
+
+
+<!-- informative /end -->
+
 
 <template id="video-template">
     <video id="example_video_1" class="video-js vjs-default-skin"
@@ -131,6 +57,9 @@
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/video.js/dist/video-js/video.dev.js"></script>
 
+
+<script src="scripts/nw/window_state.js"></script>
+<script type="text/javascript" src="styles/materialize/js/materialize.min.js"></script>
 <script src="scripts/BubblesJS/bubbles.js"></script>
 <script src="scripts/ui/DropHandler.js"></script>
 <script src="scripts/main.js"></script>
@@ -138,16 +67,16 @@
 
 <script>
 
-        var gulp = require('gulp');
+    var gulp = require('gulp');
 
-        if (gulp) {
+    if (gulp) {
 
-            gulp.task('reload', function () {
-                if (location) location.reload();
-            });
+        gulp.task('reload', function () {
+            if (location) location.reload();
+        });
 
-            gulp.watch('**/*', ['reload']);
-        }
+        gulp.watch('**/*', ['reload']);
+    }
 </script>
 </body>
 </html>

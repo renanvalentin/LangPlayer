@@ -9,22 +9,32 @@ const
   , $ = window.$;
 
 
-const SubtitleHighlight = {
+const SubtitleHandler = {
   register() {
-    $(document).on('click', '.subtitles', this.click);
+    $(document).on('click', '.original_subtitle', this.click);
     $(document).on('mouseover', '.translation span', this.highlight)
-               .on('mouseleave', 'span', this.removeHighlight);
+      .on('mouseleave', 'span', this.removeHighlight);
   }
 
   , click() {
-    let service = new GoogleTranslateService();
-    service.get($('.subtitle_original').html().replace(/<br>/g, '\n')).then((result) => {
+    if (SubtitleHandler.alreadyExist()) {
+      return;
+    }
+
+    let service = new GoogleTranslateService()
+      , text = $('.original_subtitle').html().replace(/<br>/g, '\n');
+
+    service.get(text).then((result) => {
       let data = GoogleTranslateFilter.prepareData(result.dictionary);
 
-      TranslationData.add($('.subtitle_original').text(), data);
+      TranslationData.add($('.original_subtitle').text(), data);
 
       GoogleTranslateFilter.addText(data);
     });
+  }
+
+  , alreadyExist() {
+    return $('.translation').length > 0;
   }
 
   , removeHighlight() {
@@ -35,8 +45,8 @@ const SubtitleHighlight = {
     let text = $(e.currentTarget).html();
     let container = $('<div />');
 
-    let originalText = $('.subtitle_original').html();
-    let store = TranslationData.get($('.subtitle_original').text());
+    let originalText = $('.original_subtitle').html();
+    let store = TranslationData.get($('.original_subtitle').text());
 
     let word = GoogleTranslateFilter.find(text, store);
 
@@ -48,11 +58,11 @@ const SubtitleHighlight = {
     container.html(highlightedText);
 
     container.css({
-      width: $('.subtitle_original').width()
+      width: $('.original_subtitle').width()
     });
 
     container.appendTo('.subtitles');
   }
 };
 
-module.exports = SubtitleHighlight;
+module.exports = SubtitleHandler;

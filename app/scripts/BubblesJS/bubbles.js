@@ -78,7 +78,7 @@ function videoBubbles() {
 			var wrapper = doc.createElement('div');
 			wrapper.innerHTML = text;
 
-			wrapper.className = "subtitle_original";
+			wrapper.className = "original_subtitle";
 
 			elem.appendChild(wrapper);
 		} else {

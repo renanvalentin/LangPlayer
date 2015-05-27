@@ -1,0 +1,25 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\iojs\\node.exe',
+1 verbose cli   'C:\\Program Files\\iojs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'run',
+1 verbose cli   'nw' ]
+2 info using npm@2.8.3
+3 info using node@v1.8.1
+4 verbose stack Error: missing script: nw
+4 verbose stack     at run (C:\Program Files\iojs\node_modules\npm\lib\run-script.js:165:19)
+4 verbose stack     at C:\Program Files\iojs\node_modules\npm\lib\run-script.js:81:5
+4 verbose stack     at C:\Program Files\iojs\node_modules\npm\node_modules\read-package-json\read-json.js:345:5
+4 verbose stack     at checkBinReferences_ (C:\Program Files\iojs\node_modules\npm\node_modules\read-package-json\read-json.js:309:45)
+4 verbose stack     at final (C:\Program Files\iojs\node_modules\npm\node_modules\read-package-json\read-json.js:343:3)
+4 verbose stack     at then (C:\Program Files\iojs\node_modules\npm\node_modules\read-package-json\read-json.js:113:5)
+4 verbose stack     at C:\Program Files\iojs\node_modules\npm\node_modules\read-package-json\read-json.js:284:20
+4 verbose stack     at FSReqWrap.readFileAfterOpen [as oncomplete] (evalmachine.<anonymous>:305:5)
+5 verbose cwd D:\dev\LangPlayer\app
+6 error Windows_NT 6.3.9600
+7 error argv "C:\\Program Files\\iojs\\node.exe" "C:\\Program Files\\iojs\\node_modules\\npm\\bin\\npm-cli.js" "run" "nw"
+8 error node v1.8.1
+9 error npm  v2.8.3
+10 error missing script: nw
+11 error If you need help, you may report this error at:
+11 error     <https://github.com/npm/npm/issues>
+12 verbose exit [ 1, true ]

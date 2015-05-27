@@ -25,9 +25,7 @@ class DropHandler {
     this.el.ondrop = function(e) {
       e.preventDefault();
 
-      var file = e.dataTransfer.files[0];
-
-      this.publish(file);
+      this.publish(e.dataTransfer.files);
 
       return false;
     }.bind(this);

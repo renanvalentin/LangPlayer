@@ -1,0 +1,19 @@
+.translation {
+  margin-top: 5px;
+  padding: 5px;
+  text-shadow: black 1px 0px 0px;
+  border-top: 2px solid rgba(255, 255, 0, 0.29);
+  cursor: pointer;
+}
+.highlighted {
+  position: absolute;
+  top: 0;
+  color: transparent;
+}
+.highlighted span {
+  color: white;
+}
+.highlighted span,
+.translation span:hover {
+  background: #ba0208;
+}
