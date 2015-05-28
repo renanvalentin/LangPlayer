@@ -6,22 +6,18 @@ const
   , document = window.document
   , videojs = window.videojs;
 
-class VideoHandler extends FileHandler {
-  constructor() {
-    this.lastPlayerId = null;
-    this.playerId = null;
+const VideoHandler = {
+  lastPlayerId: null
+  , playerId: null
+
+  , loadVideo: (file) => {
+    this.createTemplate(file);
+    this.applyVideoJs();
+
+    this.lastPlayerId = this.playerId;
   }
 
-  loadVideo(file) {
-  //  this.loadFile(file).then(function (data) {
-      this.createTemplate(file);
-      this.applyVideoJs();
-
-      this.lastPlayerId = this.playerId;
-    //}.bind(this));
-  }
-
-  createTemplate(file) {
+  , createTemplate: (file)=> {
     var t = document.querySelector('#video-template');
 
     this.playerId = this.createPlayerId();
@@ -34,17 +30,11 @@ class VideoHandler extends FileHandler {
     document.body.appendChild(clone);
   }
 
-  applyVideoJs() {
-    if(this.lastPlayerId) {
+  , applyVideoJs: () => {
+    if (this.lastPlayerId) {
       var oldPlayer = document.getElementById(this.lastPlayerId);
       videojs(oldPlayer).dispose();
     }
-
-    //var s = document.createElement("script");
-    //s.type = "text/javascript";
-    //s.src = "bower_components/video.js/dist/video-js/video.dev.js";
-    //document.head.appendChild(s);
-
 
     videojs(document.getElementById(this.playerId), {
       "controls": true,
@@ -54,9 +44,14 @@ class VideoHandler extends FileHandler {
     });
   }
 
-  createPlayerId() {
+  , createPlayerId: () => {
     return `player_${Date.now()}`;
+  },
+
+  pause: () => {
+    let player = videojs(this.playerId);
+    player.pause();
   }
-}
+};
 
 module.exports = VideoHandler;

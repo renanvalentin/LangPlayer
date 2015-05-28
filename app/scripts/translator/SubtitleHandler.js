@@ -4,10 +4,10 @@ const
   GoogleTranslateService = require('../services/GoogleTranslateService')
   , GoogleTranslateFilter = require('./GoogleTranslateFilter')
   , TranslationData = require('../data/TranslationData')
+  , VideoHanlder = require('../io/VideoHandler')
   , window = require('../nw-context.js').window()
   , document = window.document
   , $ = window.$;
-
 
 const SubtitleHandler = {
   register() {
@@ -17,19 +17,25 @@ const SubtitleHandler = {
   }
 
   , click() {
-    if (SubtitleHandler.alreadyExist()) {
+    VideoHanlder.pause();
+
+    let text = $('.original_subtitle').html().replace(/<br>/g, '\n');
+
+    if (SubtitleHandler.alreadyExist() || $('.original_subtitle').hasClass('loading')) {
       return;
     }
 
-    let service = new GoogleTranslateService()
-      , text = $('.original_subtitle').html().replace(/<br>/g, '\n');
+    SubtitleHandler.addMarker(text);
+    SubtitleHandler.addLoading();
 
-    service.get(text).then((result) => {
+    GoogleTranslateService.get(text).then((result) => {
       let data = GoogleTranslateFilter.prepareData(result.dictionary);
 
       TranslationData.add($('.original_subtitle').text(), data);
 
       GoogleTranslateFilter.addText(data);
+    }).then(() => {
+      SubtitleHandler.removeLoading();
     });
   }
 
@@ -62,6 +68,30 @@ const SubtitleHandler = {
     });
 
     container.appendTo('.subtitles');
+  }
+
+  , addMarker(text) {
+    if ($('.marker').data(text)) {
+      return;
+    }
+
+    let marker = $('<div class="marker" />');
+
+    marker.css({
+      left: $('.vjs-seek-handle')[0].style.left
+    });
+
+    marker.data(text);
+
+    marker.appendTo($('.vjs-control-bar'));
+  }
+
+  , addLoading() {
+    $('.original_subtitle').addClass('loading');
+  }
+
+  , removeLoading() {
+    $('.original_subtitle').removeClass('loading');
   }
 };
 

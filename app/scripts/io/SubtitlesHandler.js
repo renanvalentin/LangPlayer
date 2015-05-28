@@ -6,19 +6,12 @@ const
   , document = window.document
   , Bubbles = window.Bubbles;
 
-class SubtitlesHandler extends FileHandler {
-  constructor() {
-    this.lastPlayerId = null;
-    this.playerId = null;
-  }
-
+const SubtitlesHandler = {
   loadSubtitle(file) {
-    //this.loadFile(file).then(function (data) {
       this.applySubtitle(file);
-    //}.bind(this));
   }
 
-  applySubtitle(file) {
+  , applySubtitle(file) {
     var subtitles = new Bubbles.videoJS(document.querySelector('video').id);
     subtitles.subtitles(false,
       {
@@ -29,7 +22,7 @@ class SubtitlesHandler extends FileHandler {
       }
     );
   }
-}
+};
 
 module.exports = SubtitlesHandler;
 

@@ -3,7 +3,7 @@
   text-shadow: black 1px 0px 0px;
 }
 .translation {
-  border-top: 2px solid rgba(255, 255, 0, 0.29);
+  border-top: 1px solid #ba0208;
   margin-top: 5px;
   padding: 5px;
 }

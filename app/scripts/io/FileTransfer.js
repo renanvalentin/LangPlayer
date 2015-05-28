@@ -6,23 +6,18 @@ const
   , VideoHandler = require('./VideoHandler')
   , SubtitlesHandler = require('./SubtitlesHandler');
 
-
-const
-  videoHandler = new VideoHandler()
-  , subtitlesHandler = new SubtitlesHandler();
-
-
 const FileTransferFactory = {
   process: (files) => {
    [].forEach.call(files, (file, index) => {
       if (file.path.endsWith('.mp4') ||
         file.path.endsWith('.avi') ||
-        file.path.endsWith('.webm')
+        file.path.endsWith('.webm') ||
+        file.path.endsWith('.mkv')
       ) {
-        videoHandler.loadVideo(file);
+        VideoHandler.loadVideo(file);
       }
       else {
-        subtitlesHandler.loadSubtitle(file);
+        SubtitlesHandler.loadSubtitle(file);
       }
     });
   }

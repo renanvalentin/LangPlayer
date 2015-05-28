@@ -12,3 +12,14 @@
   z-index: 999999;
   opacity: 1;
 }
+.original_subtitle.loading {
+  -webkit-animation: loading .5s infinite;
+}
+@-webkit-keyframes loading {
+  from {
+    color: white;
+  }
+  to {
+    color: #ba0208;
+  }
+}

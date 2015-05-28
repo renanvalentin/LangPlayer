@@ -1,0 +1,11 @@
+.tutorial {
+  width: 100%;
+  position: absolute;
+  top: 100px;
+  text-align: center;
+  font-size: 26px;
+  font-weight: bold;
+  color: #1e1e1e;
+  -webkit-user-select: none;
+  cursor: default;
+}

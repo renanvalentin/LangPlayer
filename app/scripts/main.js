@@ -4,7 +4,8 @@ const
     FileTransfer = require('./scripts/io/FileTransfer')
   , GoogleTranslateService = require('./scripts/services/GoogleTranslateService')
   , GoogleTranslateFilter = require('./scripts/translator/GoogleTranslateFilter')
-  , SubtitleHandler = require('./scripts/translator/SubtitleHandler');
+  , SubtitleHandler = require('./scripts/translator/SubtitleHandler')
+  , UserPreferences = require('./scripts/data/UserPreferences');
 
 class App {
   start() {
@@ -17,6 +18,8 @@ class App {
     });
 
     SubtitleHandler.register();
+
+    UserPreferences.register().load();
   }
 }
 
