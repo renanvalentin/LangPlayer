@@ -12,12 +12,12 @@
   "license": "GNU",
   "window": {
     "title": "Watch english",
-    "toolbar": true,
+    "toolbar": false,
     "frame": false,
     "kiosk": false,
     "width": 640,
     "height": 265,
-    "resizable": true,
+    "resizable": false,
     "position": "center",
     "single-instance": true,
     "node-remote": "localhost"
