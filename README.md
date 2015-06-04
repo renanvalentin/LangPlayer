@@ -1,6 +1,10 @@
 # LangPlayer
 Learn new languages watching your favorite series.
 
+![alt tag](https://raw.githubusercontent.com/renanvalentin/LangPlayer/blob/master/docs/screenshots/player.png)
+![alt tag](https://raw.githubusercontent.com/renanvalentin/LangPlayer/blob/master/docs/screenshots/02.png)
+
+
 # Install Project
 
     npm install
